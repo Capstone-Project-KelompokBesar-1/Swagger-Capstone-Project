@@ -1,0 +1,383 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Gym Membership",
+    "description": "OpenAPI for Gym Membership RESTful API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "localhost:8000"
+    }
+  ],
+  "paths": {
+    "/register": {
+      "post" : {
+        "summary": "Register user",
+        "responses": {
+          "200": {
+            "description": "Success registered user",
+            "content": {
+              "application/json" : {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/login" : {
+      "post" : {
+        "summary": "Login users",
+        "responses": {
+          "200" : {
+            "description": "Success logged in",
+            "content": {
+              "application/json" : {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "type": "object",
+                      "properties": {
+                        "token": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+      }
+    },
+    "/memberships" : {
+      "get" : {
+        "tags": ["Memberships API"],
+        "summary": "Get all memberships",
+        "description": "Get all memberships",
+        "responses": {
+          "200" : {
+            "description": "Successfully to get all memberships",
+            "content": {
+              "application/json" : {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id" : {
+                            "type": "number"
+                          },
+                          "title" : {
+                            "type": "string"
+                          },
+                          "price": {
+                            "type": "integer"
+                          },
+                          "content": {
+                            "type": "string"
+                          },
+                          "type" : {
+                            "type": "string"
+                          },
+                          "time_priod": {
+                            "type": "number"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags": ["Memberships API"],
+        "summary": "Create new membership",
+        "requestBody": {
+          "content": {
+            "application/json" : {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title" : {
+                    "type": "string",
+                    "required": true
+                  },
+                  "price": {
+                    "type": "integer",
+                    "required": true
+                  },
+                  "content": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "type" : {
+                    "type": "string",
+                    "required": true
+                  },
+                  "time_priod": {
+                    "type": "number",
+                    "required": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200" : {
+            "description": "Success create membership",
+            "content": {
+              "application/json" : {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id" : {
+                      "type": "number"
+                    },
+                    "title" : {
+                      "type": "string"
+                    },
+                    "price": {
+                      "type": "integer"
+                    },
+                    "content": {
+                      "type": "string"
+                    },
+                    "type" : {
+                      "type": "string"
+                    },
+                    "time_priod": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "tags": ["Memberships API"],
+        "summary": "Update membership",
+        "requestBody": {
+          "content": {
+            "application/json" : {
+              "schema": {
+                "type": "object",
+
+                "properties": {
+                  "id" : {
+                    "type": "number"
+                  },
+                  "title" : {
+                    "type": "string"
+                  },
+                  "price": {
+                    "type": "integer"
+                  },
+                  "content": {
+                    "type": "string"
+                  },
+                  "type" : {
+                    "type": "string"
+                  },
+                  "time_priod": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200" : {
+            "description": "Successfully updated the membership",
+            "content": {
+              "application/json" : {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id" : {
+                          "type": "integer",
+                          "required": true
+                        },
+                        "title" : {
+                          "type": "string",
+                          "required": false
+                        },
+                        "price": {
+                          "type": "integer",
+                          "required": false
+                        },
+                        "content": {
+                          "type": "string",
+                          "required": false
+                        },
+                        "type" : {
+                          "type": "string",
+                          "required": false
+                        },
+                        "time_priod": {
+                          "type": "number",
+                          "required": false
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags": ["Memberships API"],
+        "summary": "Delete membership",
+        "parameters": [{
+          "in": "path",
+          
+        }
+        ],
+        "responses": {
+          "200" : {
+            "description": "Successfully deleted the membership",
+            "content": {
+              "application/json" : {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/my-plan" : {
+      "get": {
+        "tags": ["My Plan"],
+        "summary": "My Plan",
+        "description": "Get my plan subscription",
+        "responses": {
+          "200" : {
+              "description": "Successfully to get my subscription",
+              "content": {
+                "application/json" : {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "type": "integer"
+                      },
+                      "message": {
+                        "type": "string"
+                      },
+                      "data": {
+                        "type": "object",
+                        "properties": {
+                          "subscription" : {
+                            "type": "object",
+                            "properties": {
+                              "title" : {
+                                "type": "string",
+                              },
+                              "price": {
+                                "type": "integer",
+                              },
+                              "content" : {
+                                "type": "string"
+                              },
+                              "type": {
+                                "type": "string"
+                              },
+                              "time_priode": {
+                                "type": "string"
+                              },
+                              "created_at" : {
+                                "type": "string"
+                              },
+                              "updated_at" : {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "payment_method": {
+                            "type": "object",
+                            "properties": {
+                              "name": {
+                                "type": "string"
+                              },
+                              "amount": {
+                                "type": "integer"
+                              },
+                              "status": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      },
+                    }
+                  }
+                }
+              }
+          }
+        }
+      }
+    }
+  }
+}
