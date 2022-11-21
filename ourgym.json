@@ -13,6 +13,7 @@
   "paths": {
     "/register": {
       "post" : {
+        "tags" : ["Auth"],
         "summary": "Register user",
         "responses": {
           "200": {
@@ -41,6 +42,7 @@
     },
     "/login" : {
       "post" : {
+        "tags" : ["Auth"],
         "summary": "Login users",
         "responses": {
           "200" : {
@@ -69,7 +71,129 @@
               }
             }
           }
-        },
+        }
+      }
+    },
+    "/user/profile" : {
+      "get": {
+        "tags": ["User"],
+        "summary": "User Profile",
+        "description": "Get user profile",
+        "responses": {
+          "200" : {
+            "description": "Successfully to get user profile",
+            "content": {
+              "application/json" : {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                          "id" : {
+                            "type": "number"
+                          },
+                          "name" : {
+                            "type": "string"
+                          },
+                          "phone": {
+                            "type": "integer"
+                          },
+                          "email" : {
+                            "type": "string"
+                          },
+                          "created_at" : {
+                            "type": "string"
+                          },
+                          "updated_at" : {
+                            "type": "string"
+                          }
+                        }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/plan" : {
+      "get": {
+        "tags": ["User"],
+        "summary": "My Plan",
+        "description": "Get my plan subscription",
+        "responses": {
+          "200" : {
+            "description": "Successfully to get my subscription",
+            "content": {
+              "application/json" : {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "integer"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "subscription" : {
+                          "type": "object",
+                          "properties": {
+                            "title" : {
+                              "type": "string"
+                            },
+                            "price": {
+                              "type": "integer"
+                            },
+                            "content" : {
+                              "type": "string"
+                            },
+                            "type": {
+                              "type": "string"
+                            },
+                            "time_priode": {
+                              "type": "string"
+                            },
+                            "created_at" : {
+                              "type": "string"
+                            },
+                            "updated_at" : {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "payment_method": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "amount": {
+                              "type": "integer"
+                            },
+                            "status": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/memberships" : {
@@ -279,7 +403,7 @@
         "summary": "Delete membership",
         "parameters": [{
           "in": "path",
-          
+          "name": "id"
         }
         ],
         "responses": {
@@ -297,84 +421,12 @@
                       "type": "string"
                     },
                     "data": {
-                      "type": "object",
+                      "type": "object"
                     }
                   }
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/my-plan" : {
-      "get": {
-        "tags": ["My Plan"],
-        "summary": "My Plan",
-        "description": "Get my plan subscription",
-        "responses": {
-          "200" : {
-              "description": "Successfully to get my subscription",
-              "content": {
-                "application/json" : {
-                  "schema": {
-                    "type": "object",
-                    "properties": {
-                      "code": {
-                        "type": "integer"
-                      },
-                      "message": {
-                        "type": "string"
-                      },
-                      "data": {
-                        "type": "object",
-                        "properties": {
-                          "subscription" : {
-                            "type": "object",
-                            "properties": {
-                              "title" : {
-                                "type": "string",
-                              },
-                              "price": {
-                                "type": "integer",
-                              },
-                              "content" : {
-                                "type": "string"
-                              },
-                              "type": {
-                                "type": "string"
-                              },
-                              "time_priode": {
-                                "type": "string"
-                              },
-                              "created_at" : {
-                                "type": "string"
-                              },
-                              "updated_at" : {
-                                "type": "string"
-                              }
-                            }
-                          },
-                          "payment_method": {
-                            "type": "object",
-                            "properties": {
-                              "name": {
-                                "type": "string"
-                              },
-                              "amount": {
-                                "type": "integer"
-                              },
-                              "status": {
-                                "type": "string"
-                              }
-                            }
-                          }
-                        }
-                      },
-                    }
-                  }
-                }
-              }
           }
         }
       }
