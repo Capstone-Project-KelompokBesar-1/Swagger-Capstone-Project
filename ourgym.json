@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "localhost:8000"
+      "url": "https://capstone-app-dev.herokuapp.com/"
     }
   ],
   "paths": {
@@ -62,6 +62,9 @@
                       "type": "object",
                       "properties": {
                         "token": {
+                          "type": "string"
+                        },
+                        "refresh_token": {
                           "type": "string"
                         }
                       }
@@ -196,14 +199,14 @@
         }
       }
     },
-    "/memberships" : {
+    "/users" : {
       "get" : {
-        "tags": ["Memberships API"],
-        "summary": "Get all memberships",
-        "description": "Get all memberships",
+        "tags": ["Users"],
+        "summary": "Get all users",
+        "description": "Get all users",
         "responses": {
           "200" : {
-            "description": "Successfully to get all memberships",
+            "description": "Successfully to get all users",
             "content": {
               "application/json" : {
                 "schema": {
@@ -223,20 +226,23 @@
                           "id" : {
                             "type": "number"
                           },
-                          "title" : {
+                          "name" : {
                             "type": "string"
                           },
-                          "price": {
+                          "phone": {
                             "type": "integer"
                           },
-                          "content": {
+                          "email": {
                             "type": "string"
                           },
-                          "type" : {
+                          "role": {
                             "type": "string"
                           },
-                          "time_priod": {
-                            "type": "number"
+                          "created_at" : {
+                            "type": "string"
+                          },
+                          "updated_at": {
+                            "type": "string"
                           }
                         }
                       }
@@ -249,31 +255,31 @@
         }
       },
       "post" : {
-        "tags": ["Memberships API"],
-        "summary": "Create new membership",
+        "tags": ["Users"],
+        "summary": "Create new user",
         "requestBody": {
           "content": {
             "application/json" : {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "title" : {
+                  "name" : {
                     "type": "string",
                     "required": true
                   },
-                  "price": {
-                    "type": "integer",
-                    "required": true
-                  },
-                  "content": {
+                  "phone": {
                     "type": "string",
                     "required": true
                   },
-                  "type" : {
+                  "email": {
                     "type": "string",
                     "required": true
                   },
-                  "time_priod": {
+                  "created_at" : {
+                    "type": "string",
+                    "required": true
+                  },
+                  "updated_at": {
                     "type": "number",
                     "required": true
                   }
@@ -284,7 +290,7 @@
         },
         "responses": {
           "200" : {
-            "description": "Success create membership",
+            "description": "Success create user",
             "content": {
               "application/json" : {
                 "schema": {
@@ -293,20 +299,20 @@
                     "id" : {
                       "type": "number"
                     },
-                    "title" : {
+                    "name" : {
                       "type": "string"
                     },
-                    "price": {
-                      "type": "integer"
-                    },
-                    "content": {
+                    "phone": {
                       "type": "string"
                     },
-                    "type" : {
+                    "email": {
                       "type": "string"
                     },
-                    "time_priod": {
-                      "type": "number"
+                    "created_at" : {
+                      "type": "string"
+                    },
+                    "updated_at": {
+                      "type": "string"
                     }
                   }
                 }
@@ -314,10 +320,12 @@
             }
           }
         }
-      },
+      }
+    },
+    "/users/{id}" : {
       "put" : {
-        "tags": ["Memberships API"],
-        "summary": "Update membership",
+        "tags": ["Users"],
+        "summary": "Update user",
         "requestBody": {
           "content": {
             "application/json" : {
@@ -350,7 +358,7 @@
         },
         "responses": {
           "200" : {
-            "description": "Successfully updated the membership",
+            "description": "Successfully updated the user",
             "content": {
               "application/json" : {
                 "schema": {
@@ -399,8 +407,8 @@
         }
       },
       "delete" : {
-        "tags": ["Memberships API"],
-        "summary": "Delete membership",
+        "tags": ["Users"],
+        "summary": "Delete user",
         "parameters": [{
           "in": "path",
           "name": "id"
@@ -408,7 +416,237 @@
         ],
         "responses": {
           "200" : {
-            "description": "Successfully deleted the membership",
+            "description": "Successfully deleted the user",
+            "content": {
+              "application/json" : {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get" : {
+        "tags": ["Users"],
+        "summary": "Get user by id",
+        "parameters": [{
+          "in": "path",
+          "name": "id"
+        }
+        ],
+        "description": "Get user by id",
+        "responses": {
+          "200" : {
+            "description": "Successfully to get user",
+            "content": {
+              "application/json" : {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "properties": {
+                        "id" : {
+                          "type": "number"
+                        },
+                        "name" : {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "integer"
+                        },
+                        "phone": {
+                          "type": "string"
+                        },
+                        "role": {
+                          "type": "string"
+                        },
+                        "created_at" : {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/classes": {
+      "get" : {
+        "tags": ["Classes"],
+        "summary": "Get all classes",
+        "description": "Get all classes",
+        "responses": {
+          "200" : {
+            "description": "Successfully to get all classes",
+            "content": {
+              "application/json" : {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id" : {
+                            "type": "number"
+                          },
+                          "name" : {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "thumbnail": {
+                            "type": "string"
+                          },
+                          "price": {
+                            "type": "string"
+                          },
+                          "start_date": {
+                            "type": "string"
+                          },
+                          "created_at" : {
+                            "type": "string"
+                          },
+                          "updated_at": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/classes/{classId}": {
+      "get" : {
+        "tags": ["Classes"],
+        "summary": "Get class by id",
+        "description": "Get class by id",
+        "responses": {
+          "200" : {
+            "description": "Successfully to get class",
+            "content": {
+              "application/json" : {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "type": "object",
+                      "properties": {
+                        "id" : {
+                          "type": "number"
+                        },
+                        "name" : {
+                          "type": "string"
+                        },
+                        "description": {
+                          "type": "string"
+                        },
+                        "thumbnail": {
+                          "type": "string"
+                        },
+                        "price": {
+                          "type": "string"
+                        },
+                        "start_date": {
+                          "type": "string"
+                        },
+                        "created_at" : {
+                          "type": "string"
+                        },
+                        "updated_at": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags": ["Classes"],
+        "summary": "Get user carts",
+        "description": "Get user carts",
+        "responses": {
+          "200" : {
+            "description": "Successfully to get all carts",
+            "content": {
+              "application/json" : {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "tags": ["Classes"],
+        "summary": "Delete user",
+        "parameters": [{
+          "in": "path",
+          "name": "id"
+        }
+        ],
+        "responses": {
+          "200" : {
+            "description": "Successfully deleted the user",
             "content": {
               "application/json" : {
                 "schema": {
@@ -430,6 +668,61 @@
           }
         }
       }
-    }
+    },
+    "/trainers": {
+      "get": {
+        "tags": ["Trainers"],
+        "description": "Get all trainers",
+        "responses": {
+          "200" : {
+            "description": "Successfully to get all classes",
+            "content": {
+              "application/json" : {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code" : {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data" : {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "number"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "gender" : {
+                            "type": "string"
+                          },
+                          "photo": {
+                            "type": "string"
+                          },
+                          "contact": {
+                            "type": "string"
+                          },
+                          "bio": {
+                            "type": "string"
+                          },
+                          "rating": {
+                            "type": "number"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
   }
 }
