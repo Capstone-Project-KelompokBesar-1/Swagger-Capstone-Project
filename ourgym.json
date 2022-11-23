@@ -127,14 +127,14 @@
         }
       }
     },
-    "/user/plan" : {
+    "/user/classes" : {
       "get": {
         "tags": ["User"],
-        "summary": "My Plan",
-        "description": "Get my plan subscription",
+        "summary": "My Classes",
+        "description": "Get my classes",
         "responses": {
           "200" : {
-            "description": "Successfully to get my subscription",
+            "description": "Successfully to get my classes",
             "content": {
               "application/json" : {
                 "schema": {
@@ -146,46 +146,62 @@
                     "message": {
                       "type": "string"
                     },
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "subscription" : {
-                          "type": "object",
-                          "properties": {
-                            "title" : {
-                              "type": "string"
-                            },
-                            "price": {
-                              "type": "integer"
-                            },
-                            "content" : {
-                              "type": "string"
-                            },
-                            "type": {
-                              "type": "string"
-                            },
-                            "time_priode": {
-                              "type": "string"
-                            },
-                            "created_at" : {
-                              "type": "string"
-                            },
-                            "updated_at" : {
-                              "type": "string"
-                            }
-                          }
-                        },
-                        "payment_method": {
-                          "type": "object",
-                          "properties": {
-                            "name": {
-                              "type": "string"
-                            },
-                            "amount": {
-                              "type": "integer"
-                            },
-                            "status": {
-                              "type": "string"
+                    "data" : {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id" : {
+                            "type": "number"
+                          },
+                          "title" : {
+                            "type": "string"
+                          },
+                          "description": {
+                            "type": "string"
+                          },
+                          "thumbnail": {
+                            "type": "string"
+                          },
+                          "price": {
+                            "type": "string"
+                          },
+                          "start_date": {
+                            "type": "string"
+                          },
+                          "status": {
+                            "type": "string"
+                          },
+                          "created_at" : {
+                            "type": "string"
+                          },
+                          "updated_at": {
+                            "type": "string"
+                          },
+                          "trainer" : {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "gender" : {
+                                "type": "string"
+                              },
+                              "photo": {
+                                "type": "string"
+                              },
+                              "contact": {
+                                "type": "string"
+                              },
+                              "bio": {
+                                "type": "string"
+                              },
+                              "rating": {
+                                "type": "number"
+                              }
                             }
                           }
                         }
@@ -521,7 +537,7 @@
                           "id" : {
                             "type": "number"
                           },
-                          "name" : {
+                          "title" : {
                             "type": "string"
                           },
                           "description": {
@@ -578,7 +594,7 @@
                         "id" : {
                           "type": "number"
                         },
-                        "name" : {
+                        "title" : {
                           "type": "string"
                         },
                         "description": {
