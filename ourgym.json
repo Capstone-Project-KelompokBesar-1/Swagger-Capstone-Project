@@ -15,6 +15,33 @@
       "post" : {
         "tags" : ["Auth"],
         "summary": "Register user",
+        "requestBody": {
+          "content": {
+            "application/json" : {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name" : {
+                    "type": "string",
+                    "required": true
+                  },
+                  "phone": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "email": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "password": {
+                    "type": "string",
+                    "required": true
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success registered user",
@@ -79,7 +106,7 @@
     },
     "/user/profile" : {
       "get": {
-        "tags": ["User"],
+        "tags": ["User logged in"],
         "summary": "User Profile",
         "description": "Get user profile",
         "responses": {
@@ -129,7 +156,7 @@
     },
     "/user/classes" : {
       "get": {
-        "tags": ["User"],
+        "tags": ["User logged in"],
         "summary": "My Classes",
         "description": "Get my classes",
         "responses": {
