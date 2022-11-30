@@ -300,8 +300,60 @@
                           "start_date": {
                             "type": "string"
                           },
-                          "status": {
+                          "type": {
                             "type": "string"
+                          },
+                          "room": {
+                            "type": "object",
+                            "properties": {
+                              "id" : {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "address": {
+                                "type": "string"
+                              },
+                              "requirements": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "trainer": {
+                            "type": "object",
+                            "properties": {
+                              "id" : {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "gender": {
+                                "type": "string"
+                              },
+                              "photo": {
+                                "type": "string"
+                              },
+                              "contact": {
+                                "type": "string"
+                              },
+                              "bio": {
+                                "type": "string"
+                              },
+                              "rating": {
+                                "type": "string"
+                              },
+                              "created_at": {
+                                "type": "string"
+                              },
+                              "updated_at": {
+                                "type": "string"
+                              }
+                            }
                           },
                           "created_at" : {
                             "type": "string"
@@ -682,6 +734,62 @@
                           },
                           "start_date": {
                             "type": "string"
+                          },
+                          "type": {
+                            "type": "string",
+                            "example": "online/offline"
+                          },
+                          "room": {
+                            "type": "object",
+                            "properties": {
+                              "id" : {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "url": {
+                                "type": "string"
+                              },
+                              "address": {
+                                "type": "string"
+                              },
+                              "requirements": {
+                                "type": "string"
+                              }
+                            }
+                          },
+                          "trainer": {
+                            "type": "object",
+                            "properties": {
+                              "id" : {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "gender": {
+                                "type": "string"
+                              },
+                              "photo": {
+                                "type": "string"
+                              },
+                              "contact": {
+                                "type": "string"
+                              },
+                              "bio": {
+                                "type": "string"
+                              },
+                              "rating": {
+                                "type": "string"
+                              },
+                              "created_at": {
+                                "type": "string"
+                              },
+                              "updated_at": {
+                                "type": "string"
+                              }
+                            }
                           },
                           "created_at" : {
                             "type": "string"
