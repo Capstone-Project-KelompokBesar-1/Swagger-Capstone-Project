@@ -360,32 +360,6 @@
                           },
                           "updated_at": {
                             "type": "string"
-                          },
-                          "trainer" : {
-                            "type": "object",
-                            "properties": {
-                              "id": {
-                                "type": "number"
-                              },
-                              "name": {
-                                "type": "string"
-                              },
-                              "gender" : {
-                                "type": "string"
-                              },
-                              "photo": {
-                                "type": "string"
-                              },
-                              "contact": {
-                                "type": "string"
-                              },
-                              "bio": {
-                                "type": "string"
-                              },
-                              "rating": {
-                                "type": "number"
-                              }
-                            }
                           }
                         }
                       }
