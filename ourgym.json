@@ -222,10 +222,25 @@
                             "type": "string"
                           },
                           "phone": {
-                            "type": "integer"
+                            "type": "string"
                           },
                           "email" : {
                             "type": "string"
+                          },
+                          "photo" : {
+                            "type": "string"
+                          },
+                          "birth_date" : {
+                            "type": "string"
+                          },
+                          "address" : {
+                            "type": "string"
+                          },
+                          "gender" : {
+                            "type": "string"
+                          },
+                          "is_admin" : {
+                            "type": "boolean"
                           },
                           "created_at" : {
                             "type": "string"
