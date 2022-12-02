@@ -71,6 +71,25 @@
       "post" : {
         "tags" : ["Auth"],
         "summary": "Login users",
+        "requestBody": {
+          "content": {
+            "application/json" : {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string",
+                    "required": true
+                  },
+                  "password": {
+                    "type": "string",
+                    "required": true
+                  }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200" : {
             "description": "Success logged in",
