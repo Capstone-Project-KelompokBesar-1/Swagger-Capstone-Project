@@ -216,6 +216,11 @@
       "get": {
         "tags": ["User logged in"],
         "summary": "User Profile",
+        "parameters": [{
+            "in": "header",
+            "name": "token"
+          }
+        ],
         "description": "Get user profile",
         "responses": {
           "200" : {
@@ -281,6 +286,12 @@
       "get": {
         "tags": ["User logged in"],
         "summary": "My Classes",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "token"
+          }
+        ],
         "description": "Get my classes",
         "responses": {
           "200" : {
@@ -449,6 +460,15 @@
       "post" : {
         "tags": ["Users"],
         "summary": "Create new user",
+        "parameters": [{
+          "in": "path",
+          "name": "id"
+        },
+          {
+            "in": "header",
+            "name": "token"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json" : {
@@ -518,6 +538,15 @@
       "put" : {
         "tags": ["Users"],
         "summary": "Update user",
+        "parameters": [{
+          "in": "path",
+          "name": "id"
+        },
+          {
+            "in": "header",
+            "name": "token"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json" : {
@@ -604,7 +633,11 @@
         "parameters": [{
           "in": "path",
           "name": "id"
-        }
+        },
+          {
+            "in": "header",
+            "name": "token"
+          }
         ],
         "responses": {
           "200" : {
@@ -859,6 +892,15 @@
       "post" : {
         "tags": ["Classes"],
         "summary": "Get user carts",
+        "parameters": [{
+          "in": "path",
+          "name": "id"
+        },
+          {
+            "in": "header",
+            "name": "token"
+          }
+        ],
         "description": "Get user carts",
         "responses": {
           "200" : {
@@ -890,7 +932,11 @@
         "parameters": [{
           "in": "path",
           "name": "id"
-        }
+        },
+          {
+            "in": "header",
+            "name": "token"
+          }
         ],
         "responses": {
           "200" : {
